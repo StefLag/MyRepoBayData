@@ -31,6 +31,7 @@ sum(x+y)
 
 n <- 1e4
 scale <- 1.5e4
+#https://en.wikipedia.org/wiki/Beta_distribution
 income <- round( rbeta(n=n, shape1=2, shape2=12) * scale, 2)
 
 library(ggplot2) # only load (run) once
@@ -63,11 +64,13 @@ total_income <- sum(income)
 
 #next exercise
 
+
 income_s <- sort(income)
 group <- c("Lower 1%", "Lower 50%", "Top 10%", "Top 1%")
 p <- c(.1, .5, .9, .99)
 
 boundary <- round(income_s[p*n], 0)
+#n is equal to the number of person 10.000
 
 low10_m <- mean( income_s[c(1:(.1*n))] )
 low50_m <- mean( income_s[c(1:(.5*n))] )
@@ -79,16 +82,50 @@ means <-  round( c(low10_m, low50_m, top10_m, top1_m) , 0)
 income_summary <- data.frame(group, boundary, means)
 income_summary
 
-##       group boundary means
-## 1  Lower 1%      618   398
-## 2 Lower 50%     1865  1073
-## 3   Top 10%     4014  4979
-## 4    Top 1%     6125  6737
+
+
+
+# 3
+
+
+a<- c(1,2,3,4,5)
+b<- c(6,7,8,9,10)
+c<- c(11,12,13,14,15)
+d<- c(16,17,18,19,20)
+e<- c(21,22,23,24,25)
+
+df <- data.frame(a,b,c,d,e)
+
+mean(df[,1])
+mean(df[,2])
+mean(df[,3])
+mean(df[,4])
+mean(df[,5])
+
+colMeans(df)
+
+
+for (i in 1:5){
+  means[i] <- mean(df[,i])
+}
 
 
 
 
 
+library(tidyverse)
+diamonds
+names(diamonds) 
+View(diamonds)
 
 
+diamonds[which(diamonds$cut == "Ideal"), ]
+
+diamonds %>% filter(cut == "Ideal")
+
+diamonds %>% select(carat)
+
+
+
+hist(diamonds$carat)
 
