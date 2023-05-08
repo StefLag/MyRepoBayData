@@ -54,11 +54,8 @@ ggplot(data.frame(x = income), aes(x=x)) +
 
 total_income <- sum(income)
 
-
  for(i in 1:length(income)){
-   
    perc_of_tot_income[i] <- income[i]/total_income
-   
  }
 
 
@@ -121,12 +118,13 @@ View(diamonds)
 
 diamonds[which(diamonds$cut == "Ideal"), ]
 
+diamonds[diamonds$cut == "Ideal", ] 
+
 diamonds %>% filter(cut == "Ideal")
 
 diamonds %>% select(carat)
 
 
-
 hist(diamonds$carat)
-#
+
 
