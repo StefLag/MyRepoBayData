@@ -128,4 +128,5 @@ diamonds %>% select(carat)
 
 
 hist(diamonds$carat)
+#
 
